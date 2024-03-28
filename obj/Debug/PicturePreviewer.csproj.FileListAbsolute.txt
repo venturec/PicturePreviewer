@@ -1,0 +1,13 @@
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\bin\Debug\PicturePreviewer.exe.config
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\bin\Debug\PicturePreviewer.exe
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\bin\Debug\PicturePreviewer.pdb
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.csproj.AssemblyReference.cache
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.PicturePreviewLanding.resources
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.Properties.Resources.resources
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.csproj.GenerateResource.cache
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.csproj.CoreCompileInputs.cache
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.exe
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.pdb
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.PicturePreviewer.resources
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.RenameFiles.resources
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.QuickPreview.resources
