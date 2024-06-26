@@ -38,8 +38,8 @@
             this.btnReview = new System.Windows.Forms.Button();
             this.tvFoldersAndFiles = new System.Windows.Forms.TreeView();
             this.btnCaptureScreen = new System.Windows.Forms.Button();
-            this.btnCloseQuickPreviews = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnResequenceFileNumbers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPreview
@@ -84,10 +84,10 @@
             // btnRenameFiles
             // 
             this.btnRenameFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenameFiles.Location = new System.Drawing.Point(201, 66);
+            this.btnRenameFiles.Location = new System.Drawing.Point(1005, 167);
             this.btnRenameFiles.Name = "btnRenameFiles";
             this.btnRenameFiles.Size = new System.Drawing.Size(151, 32);
-            this.btnRenameFiles.TabIndex = 6;
+            this.btnRenameFiles.TabIndex = 10;
             this.btnRenameFiles.Text = "Rename Files";
             this.btnRenameFiles.UseVisualStyleBackColor = true;
             this.btnRenameFiles.Click += new System.EventHandler(this.btnRenameFiles_Click);
@@ -123,49 +123,48 @@
             this.tvFoldersAndFiles.Location = new System.Drawing.Point(12, 205);
             this.tvFoldersAndFiles.Name = "tvFoldersAndFiles";
             this.tvFoldersAndFiles.Size = new System.Drawing.Size(1144, 671);
-            this.tvFoldersAndFiles.TabIndex = 10;
-            this.tvFoldersAndFiles.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.tvFoldersAndFiles_NodeMouseHover);
+            this.tvFoldersAndFiles.TabIndex = 7;
             this.tvFoldersAndFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvFoldersAndFiles_AfterSelect);
             this.tvFoldersAndFiles.DoubleClick += new System.EventHandler(this.tvFoldersAndFiles_DoubleClick);
             // 
             // btnCaptureScreen
             // 
-            this.btnCaptureScreen.Location = new System.Drawing.Point(1005, 66);
+            this.btnCaptureScreen.Location = new System.Drawing.Point(1005, 24);
             this.btnCaptureScreen.Name = "btnCaptureScreen";
             this.btnCaptureScreen.Size = new System.Drawing.Size(151, 52);
-            this.btnCaptureScreen.TabIndex = 9;
+            this.btnCaptureScreen.TabIndex = 8;
             this.btnCaptureScreen.Text = "Capture Screen";
             this.btnCaptureScreen.UseVisualStyleBackColor = true;
             this.btnCaptureScreen.Click += new System.EventHandler(this.btnCaptureScreen_Click);
-            // 
-            // btnCloseQuickPreviews
-            // 
-            this.btnCloseQuickPreviews.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseQuickPreviews.Location = new System.Drawing.Point(544, 66);
-            this.btnCloseQuickPreviews.Name = "btnCloseQuickPreviews";
-            this.btnCloseQuickPreviews.Size = new System.Drawing.Size(188, 32);
-            this.btnCloseQuickPreviews.TabIndex = 8;
-            this.btnCloseQuickPreviews.Text = "Close All Quick Previews";
-            this.btnCloseQuickPreviews.UseVisualStyleBackColor = true;
-            this.btnCloseQuickPreviews.Click += new System.EventHandler(this.btnCloseQuickPreviews_Click);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(201, 142);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(151, 30);
-            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.TabIndex = 6;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnResequenceFileNumbers
+            // 
+            this.btnResequenceFileNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResequenceFileNumbers.Location = new System.Drawing.Point(1005, 129);
+            this.btnResequenceFileNumbers.Name = "btnResequenceFileNumbers";
+            this.btnResequenceFileNumbers.Size = new System.Drawing.Size(151, 32);
+            this.btnResequenceFileNumbers.TabIndex = 9;
+            this.btnResequenceFileNumbers.Text = "Resequence File Numbers";
+            this.btnResequenceFileNumbers.UseVisualStyleBackColor = true;
+            this.btnResequenceFileNumbers.Click += new System.EventHandler(this.btnResequenceFileNumbers_Click);
             // 
             // PicturePreviewLanding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 888);
+            this.Controls.Add(this.btnResequenceFileNumbers);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnCloseQuickPreviews);
             this.Controls.Add(this.btnCaptureScreen);
             this.Controls.Add(this.tvFoldersAndFiles);
             this.Controls.Add(this.btnReview);
@@ -194,8 +193,8 @@
         private System.Windows.Forms.Button btnReview;
         private System.Windows.Forms.TreeView tvFoldersAndFiles;
         private System.Windows.Forms.Button btnCaptureScreen;
-        private System.Windows.Forms.Button btnCloseQuickPreviews;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnResequenceFileNumbers;
     }
 }
 

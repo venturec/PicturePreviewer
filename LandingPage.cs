@@ -152,47 +152,47 @@ namespace PicturePreviewer
 
         // The following methods will all fail if there are pictures within folders of folders and the the folder is high-lighted
         // Still need to figure out a good way to bypass a folder selection and just determine if the item selected is an actual image file or just a folder or other binary file.
-        private void tvFoldersAndFiles_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
-        {
-            TreeView tv = (TreeView)sender;
-            TreeNodeMouseHoverEventArgs args = (TreeNodeMouseHoverEventArgs)e;
+        //private void tvFoldersAndFiles_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
+        //{
+        //    TreeView tv = (TreeView)sender;
+        //    TreeNodeMouseHoverEventArgs args = (TreeNodeMouseHoverEventArgs)e;
 
-            if (args.Node.Parent != null)
-            {
-                String[] folderPathSplit = this.tbPictureFolder.Text.Split('\\');
-                String[] nodeFullPath = args.Node.FullPath.Split('\\');
+        //    if (args.Node.Parent != null)
+        //    {
+        //        String[] folderPathSplit = this.tbPictureFolder.Text.Split('\\');
+        //        String[] nodeFullPath = args.Node.FullPath.Split('\\');
 
-                String nodePath = "";
+        //        String nodePath = "";
 
-                if (nodeFullPath[0] == folderPathSplit[folderPathSplit.Length - 1])
-                {
-                    for(Int32 i = 0; i < nodeFullPath.Length; i++)
-                    {
-                        if (i > 0)
-                        {
-                            nodePath += nodeFullPath[i] + "\\";
-                        }
-                    }
+        //        if (nodeFullPath[0] == folderPathSplit[folderPathSplit.Length - 1])
+        //        {
+        //            for(Int32 i = 0; i < nodeFullPath.Length; i++)
+        //            {
+        //                if (i > 0)
+        //                {
+        //                    nodePath += nodeFullPath[i] + "\\";
+        //                }
+        //            }
 
-                    nodePath = nodePath.Remove(nodePath.Length - 1);
-                }
-                else
-                {
-                    nodePath = args.Node.FullPath;
-                }
+        //            nodePath = nodePath.Remove(nodePath.Length - 1);
+        //        }
+        //        else
+        //        {
+        //            nodePath = args.Node.FullPath;
+        //        }
 
-                if (checkFormOpen())
-                {
-                    updateOpenQuickViews(this.tbPictureFolder.Text + "\\" + nodePath);
-                }
-                else
-                {
-                    QuickPreview qp = new QuickPreview();
-                    qp.setPreviewPath(this.tbPictureFolder.Text + "\\" + nodePath);
-                    qp.Show();
-                }
-            }
-        }
+        //        if (checkFormOpen())
+        //        {
+        //            updateOpenQuickViews(this.tbPictureFolder.Text + "\\" + nodePath);
+        //        }
+        //        else
+        //        {
+        //            QuickPreview qp = new QuickPreview();
+        //            qp.setPreviewPath(this.tbPictureFolder.Text + "\\" + nodePath);
+        //            qp.Show();
+        //        }
+        //    }
+        //}
 
         private void tvFoldersAndFiles_DoubleClick(object sender, EventArgs e)
         {
@@ -310,11 +310,6 @@ namespace PicturePreviewer
 
         }
 
-        private void btnCloseQuickPreviews_Click(object sender, EventArgs e)
-        {
-            //closeOpenQuickViews();
-        }
-
         /*
         private void tvFoldersAndFiles_NodeSelect(object sender, TreeNode e)
         {
@@ -384,6 +379,92 @@ namespace PicturePreviewer
             this.populateTreeView(this.tbPictureFolder.Text);
         }
 
+        private void btnResequenceFileNumbers_Click(object sender, EventArgs e)
+        {
+            if (this.tbPictureFolder.Text == null
+                || this.tbPictureFolder.Text == "")
+            {
+                return;
+            }
+
+            // Get all files in the subfolder. Do not traverse folders within folders as this could mess up the numbering sequence
+            Int32 fileNumber = 1;
+            String[] folderFiles = Directory.GetFiles(this.tbPictureFolder.Text);
+
+            if (folderFiles.Length > 0)
+            {
+                List<Int32> fileIds = new List<Int32>();
+
+                foreach (String fn in folderFiles)
+                {
+                    String[] filePathSplit = fn.Split('\\');
+                    String fileName = filePathSplit[filePathSplit.Length - 1];
+
+                    String[] fileNameSplit = fileName.Split('.');
+
+                    // Now get the numeric character(s) from the file name and compare to fileNumber to determine if it is out of sequence
+                    // Examples: Question1.png, Question26.png, Question104.png, 
+                    Char[] fnCharArray = fileNameSplit[0].ToCharArray();
+
+                    String tempFileNumber = "";
+
+                    for (Int32 i = 8; i < fnCharArray.Length; i++)
+                    {
+                        tempFileNumber = tempFileNumber + fnCharArray[i].ToString();
+                    }
+
+                    fileIds.Add(Convert.ToInt32(tempFileNumber));
+                }
+
+                fileIds.Sort();
+
+                for (Int32 i = 0; i < fileIds.Count; i++) 
+                {
+                    if (fileIds[i] != fileNumber)
+                    {
+                        // Get the original file and copy it with the new name, then delete the old one
+                        foreach (String fn in folderFiles)
+                        {
+                            String[] filePathSplit = fn.Split('\\');
+                            String fileName = filePathSplit[filePathSplit.Length - 1];
+
+                            String[] fileNameSplit = fileName.Split('.');
+
+                            // Now get the numeric character(s) from the file name and compare to fileNumber to determine if it is out of sequence
+                            // Examples: Question1.png, Question26.png, Question104.png, 
+                            Char[] fnCharArray = fileNameSplit[0].ToCharArray();
+
+                            String tempFileNumber = "";
+
+                            for (Int32 j = 8; j < fnCharArray.Length; j++)
+                            {
+                                tempFileNumber = tempFileNumber + fnCharArray[j].ToString();
+                            }
+
+                            if (Convert.ToInt32(tempFileNumber) == fileIds[i])
+                            {
+                                // Build the new file name with the new sequenced number
+                                String newFileName = filePathSplit[0];
+                                for (Int32 j = 1; j < filePathSplit.Length - 1; j++)
+                                {
+                                    newFileName = newFileName + "\\" + filePathSplit[j];
+                                }
+
+                                newFileName = newFileName + "\\Question" + fileNumber.ToString() + ".png";
+
+                                File.Copy(fn, newFileName, false);
+
+                                File.Delete(fn);
+
+                                break;
+                            }
+                        }
+                    }
+
+                    fileNumber++;
+                }
+            }
+        }
 
         //private void CaptureMyScreen()
         //{
