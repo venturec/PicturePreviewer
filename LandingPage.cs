@@ -251,59 +251,59 @@ namespace PicturePreviewer
             }
         }
 
-        private void tvFoldersAndFiles_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            TreeView tv = (TreeView)sender;
+        //private void tvFoldersAndFiles_AfterSelect(object sender, TreeViewEventArgs e)
+        //{
+        //    TreeView tv = (TreeView)sender;
 
-            if (tv.SelectedNode.Parent != null)
-            {
-                String[] folderPathSplit = this.tbPictureFolder.Text.Split('\\');
-                String[] nodeFullPath = tv.SelectedNode.FullPath.Split('\\');
+        //    if (tv.SelectedNode.Parent != null)
+        //    {
+        //        String[] folderPathSplit = this.tbPictureFolder.Text.Split('\\');
+        //        String[] nodeFullPath = tv.SelectedNode.FullPath.Split('\\');
 
-                String nodePath = "";
-                if (nodeFullPath[0] == folderPathSplit[folderPathSplit.Length - 1])
-                {
-                    for (Int32 i = 0; i < nodeFullPath.Length; i++)
-                    {
-                        if (i > 0)
-                        {
-                            nodePath += nodeFullPath[i] + "\\";
-                        }
-                    }
+        //        String nodePath = "";
+        //        if (nodeFullPath[0] == folderPathSplit[folderPathSplit.Length - 1])
+        //        {
+        //            for (Int32 i = 0; i < nodeFullPath.Length; i++)
+        //            {
+        //                if (i > 0)
+        //                {
+        //                    nodePath += nodeFullPath[i] + "\\";
+        //                }
+        //            }
 
-                    nodePath = nodePath.Remove(nodePath.Length - 1);
-                }
-                else
-                {
-                    nodePath = tv.SelectedNode.FullPath;
-                }
+        //            nodePath = nodePath.Remove(nodePath.Length - 1);
+        //        }
+        //        else
+        //        {
+        //            nodePath = tv.SelectedNode.FullPath;
+        //        }
 
-                if (checkFormOpen())
-                {
-                    try
-                    {
-                        updateOpenQuickViews(this.tbPictureFolder.Text + "\\" + nodePath);
-                    }
-                    catch (Exception exc1)
-                    {
-                        // Don't care
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        QuickPreview qp = new QuickPreview();
-                        qp.setPreviewPath(this.tbPictureFolder.Text + "\\" + nodePath);
-                        qp.Show();
-                    }
-                    catch (Exception exc1)
-                    {
-                        // Don't care
-                    }
-                }
-            }
-        }
+        //        if (checkFormOpen())
+        //        {
+        //            try
+        //            {
+        //                updateOpenQuickViews(this.tbPictureFolder.Text + "\\" + nodePath);
+        //            }
+        //            catch (Exception exc1)
+        //            {
+        //                // Don't care
+        //            }
+        //        }
+        //        else
+        //        {
+        //            try
+        //            {
+        //                QuickPreview qp = new QuickPreview();
+        //                qp.setPreviewPath(this.tbPictureFolder.Text + "\\" + nodePath);
+        //                qp.Show();
+        //            }
+        //            catch (Exception exc1)
+        //            {
+        //                // Don't care
+        //            }
+        //        }
+        //    }
+        //}
 
         private void btnCaptureScreen_Click(object sender, EventArgs e)
         {

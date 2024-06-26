@@ -83,8 +83,9 @@
             // 
             // btnRenameFiles
             // 
+            this.btnRenameFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRenameFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenameFiles.Location = new System.Drawing.Point(1005, 167);
+            this.btnRenameFiles.Location = new System.Drawing.Point(995, 167);
             this.btnRenameFiles.Name = "btnRenameFiles";
             this.btnRenameFiles.Size = new System.Drawing.Size(151, 32);
             this.btnRenameFiles.TabIndex = 10;
@@ -122,14 +123,14 @@
             this.tvFoldersAndFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvFoldersAndFiles.Location = new System.Drawing.Point(12, 205);
             this.tvFoldersAndFiles.Name = "tvFoldersAndFiles";
-            this.tvFoldersAndFiles.Size = new System.Drawing.Size(1144, 671);
+            this.tvFoldersAndFiles.Size = new System.Drawing.Size(1134, 671);
             this.tvFoldersAndFiles.TabIndex = 7;
-            this.tvFoldersAndFiles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvFoldersAndFiles_AfterSelect);
             this.tvFoldersAndFiles.DoubleClick += new System.EventHandler(this.tvFoldersAndFiles_DoubleClick);
             // 
             // btnCaptureScreen
             // 
-            this.btnCaptureScreen.Location = new System.Drawing.Point(1005, 24);
+            this.btnCaptureScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCaptureScreen.Location = new System.Drawing.Point(995, 24);
             this.btnCaptureScreen.Name = "btnCaptureScreen";
             this.btnCaptureScreen.Size = new System.Drawing.Size(151, 52);
             this.btnCaptureScreen.TabIndex = 8;
@@ -149,8 +150,9 @@
             // 
             // btnResequenceFileNumbers
             // 
+            this.btnResequenceFileNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnResequenceFileNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResequenceFileNumbers.Location = new System.Drawing.Point(1005, 129);
+            this.btnResequenceFileNumbers.Location = new System.Drawing.Point(995, 129);
             this.btnResequenceFileNumbers.Name = "btnResequenceFileNumbers";
             this.btnResequenceFileNumbers.Size = new System.Drawing.Size(151, 32);
             this.btnResequenceFileNumbers.TabIndex = 9;
@@ -162,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 888);
+            this.ClientSize = new System.Drawing.Size(1158, 888);
             this.Controls.Add(this.btnResequenceFileNumbers);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnCaptureScreen);
