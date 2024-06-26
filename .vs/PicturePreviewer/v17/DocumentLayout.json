@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|c:\\users\\marcu\\documents\\github\\picturepreviewer\\landingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|solutionrelative:landingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\landingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|solutionrelative:landingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\landingpage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|solutionrelative:landingpage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|c:\\users\\marcu\\documents\\github\\picturepreviewer\\picturepreviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|solutionrelative:picturepreviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|c:\\users\\marcu\\documents\\github\\picturepreviewer\\landingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D9766E57-A41D-4FC7-901D-F2304D0FE258}|PicturePreviewer.csproj|solutionrelative:landingpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,37 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LandingPage.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.Designer.cs",
-              "RelativeDocumentMoniker": "LandingPage.Designer.cs",
-              "ToolTip": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.Designer.cs",
-              "RelativeToolTip": "LandingPage.Designer.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAAAH4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T04:35:27.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LandingPage.cs",
-              "DocumentMoniker": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.cs",
-              "RelativeDocumentMoniker": "LandingPage.cs",
-              "ToolTip": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.cs",
-              "RelativeToolTip": "LandingPage.cs",
-              "ViewState": "AQIAAPEAAAAAAAAAAAAvwPwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T17:52:59.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "LandingPage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.cs",
               "RelativeDocumentMoniker": "LandingPage.cs",
@@ -61,6 +35,32 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T17:52:37.656Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LandingPage.cs",
+              "DocumentMoniker": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.cs",
+              "RelativeDocumentMoniker": "LandingPage.cs",
+              "ToolTip": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\LandingPage.cs",
+              "RelativeToolTip": "LandingPage.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAmwCYAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T17:52:59.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PicturePreviewer.cs",
+              "DocumentMoniker": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\PicturePreviewer.cs",
+              "RelativeDocumentMoniker": "PicturePreviewer.cs",
+              "ToolTip": "C:\\Users\\marcu\\Documents\\GitHub\\PicturePreviewer\\PicturePreviewer.cs",
+              "RelativeToolTip": "PicturePreviewer.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAQwCMAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T04:55:59.612Z",
+              "EditorCaption": ""
             }
           ]
         }
