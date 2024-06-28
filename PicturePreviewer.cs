@@ -182,7 +182,7 @@ namespace PicturePreviewer
                 String[] imgLocationSplit = imgLocation.Split('\\');
 
                 //Bitmap bmp = new Bitmap(imgLocation);
-                //this.pbPreview.ImageLocation = imgLocation;
+                this.pbPreview.ImageLocation = imgLocation;
                 //this.pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
                 //this.pbPreview.Image = new Bitmap(bmp);
 
@@ -313,8 +313,11 @@ namespace PicturePreviewer
 
             XmlNodeList fileFlags = xd.GetElementsByTagName("fileflags");
             XmlNodeList bookmarks = xd.GetElementsByTagName("bookmark");
-
-            fileFlags[0].RemoveChild(bookmarks[0]);
+            
+            if (bookmarks.Count > 0)
+            {
+                fileFlags[0].RemoveChild(bookmarks[0]);
+            }
 
             XmlElement bookmark = xd.CreateElement("bookmark");
             XmlElement filepath = xd.CreateElement("filepath");
