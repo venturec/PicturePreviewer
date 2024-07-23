@@ -43,11 +43,24 @@ namespace PicturePreviewer
                 }
                 else
                 {
-                    pp.folderPath = this.tbPictureFolder.Text + "\\" + this.tvFoldersAndFiles.SelectedNode.Text;
-                    pp.getFromSubfolders = this.cbGetFromSubDirectories.Checked;
-                    pp.loadingFiles = true;
-                    pp.getAllFiles();
-                    pp.loadingFiles = false;
+                    String folderPath = this.tbPictureFolder.Text + "\\" + this.tvFoldersAndFiles.SelectedNode.Text;
+
+                    if (Directory.Exists(folderPath))
+                    {
+                        pp.folderPath = this.tbPictureFolder.Text + "\\" + this.tvFoldersAndFiles.SelectedNode.Text;
+                        pp.getFromSubfolders = this.cbGetFromSubDirectories.Checked;
+                        pp.loadingFiles = true;
+                        pp.getAllFiles();
+                        pp.loadingFiles = false;
+                    }
+                    else
+                    {
+                        pp.folderPath = this.tbPictureFolder.Text;
+                        pp.getFromSubfolders = this.cbGetFromSubDirectories.Checked;
+                        pp.loadingFiles = true;
+                        pp.getAllFiles();
+                        pp.loadingFiles = false;
+                    }
                 }
 
                 pp.Show();
@@ -107,7 +120,6 @@ namespace PicturePreviewer
 
                     this.tvFoldersAndFiles.Nodes.Add(tnd1);
                 }
-
             }
         }
 
