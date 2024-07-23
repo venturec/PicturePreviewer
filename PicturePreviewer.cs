@@ -355,5 +355,22 @@ namespace PicturePreviewer
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult drDelete = MessageBox.Show("Would you like to delete the the original file?", "Delete Original File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Check if the New file exists first and then proceed with the delete if the user clicks Yes in the MessageBox
+            if (drDelete == DialogResult.Yes)
+            {
+                File.Delete(this.pbPreview.ImageLocation);
+
+                if (this.pictureArray > 0)
+                {
+                    this.pictureArray = this.pictureArray - 1;
+                }
+
+                getAllFiles();
+            }
+        }
     }
 }
