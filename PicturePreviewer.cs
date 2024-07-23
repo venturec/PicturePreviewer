@@ -77,6 +77,9 @@ namespace PicturePreviewer
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            this.pbPreview.Image = null;
+            this.pbPreview.ImageLocation = null;
+
             if (pictureArray == files.Length - 1)
             {
                 pictureArray = 0;
@@ -95,6 +98,9 @@ namespace PicturePreviewer
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
+            this.pbPreview.Image = null;
+            this.pbPreview.ImageLocation = null;
+
             if (pictureArray == 0)
             {
                 pictureArray = files.Length - 1;
@@ -333,7 +339,6 @@ namespace PicturePreviewer
 
         private void cbFullSizePicture_CheckedChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine("");
             resetPictureSize();
         }
 
@@ -355,22 +360,44 @@ namespace PicturePreviewer
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult drDelete = MessageBox.Show("Would you like to delete the the original file?", "Delete Original File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        // This is way to big for tonight
+        // If you delete a picture while in the previewer, then you also have to consider deleting the bookmarks as well
+        // Will just manually delete the picture for now and come back to this.
+        // Plus there are problems when deleting an image shown in the Picture Previewer anyway which looks like have not been resolved.
+        // May try .Net 8.0 CORE to see if the issue is fixed there or find some other alternative method
+        // Still can't figure out why this does not work, but the Save As DOES work when asking whether to delete the original image or not.
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    DialogResult drDelete = MessageBox.Show("Would you like to delete the the original file?", "Delete Original File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Check if the New file exists first and then proceed with the delete if the user clicks Yes in the MessageBox
-            if (drDelete == DialogResult.Yes)
-            {
-                File.Delete(this.pbPreview.ImageLocation);
+        //    // Check if the New file exists first and then proceed with the delete if the user clicks Yes in the MessageBox
+        //    if (drDelete == DialogResult.Yes)
+        //    {
+        //        // There is a known bug with PictureBoxPreview where the dispose() and setting Image / Image location to null does not work
+        //        // Using this as a work-around
+        //        String fileToDel = this.pbPreview.ImageLocation;
+        //        String folderPath = this.folderPath;
+        //        Int32 prevPictureArray = 0;
 
-                if (this.pictureArray > 0)
-                {
-                    this.pictureArray = this.pictureArray - 1;
-                }
+        //        if (pictureArray == 0)
+        //        {
+        //            prevPictureArray = 0;
+        //        }
+        //        else
+        //        {
+        //            prevPictureArray = pictureArray - 1;
+        //        }
 
-                getAllFiles();
-            }
-        }
+        //        this.Close();
+                
+        //        File.Delete(fileToDel);
+
+        //        PicturePreviewer pp = new PicturePreviewer();
+        //        pp.folderPath = folderPath;
+        //        pp.pictureArray = prevPictureArray;
+
+        //        this.Show();
+        //    }
+        //}
     }
 }
