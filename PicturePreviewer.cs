@@ -38,12 +38,24 @@ namespace PicturePreviewer
 
         public void goToBookmark()
         {
-            files = UtilityClass.getDirectoryFiles(this.folderPath, this.getFromSubfolders);
-
             String userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
             XmlDocument xd = new XmlDocument();
             xd.Load(userProfileDirectory + "\\AppData\\Roaming\\PicturePreviewer\\FileFlags.xml");
             XmlNodeList bookmarks = xd.GetElementsByTagName("bookmark");
+
+            String bookmarkedLocation = bookmarks[0].InnerText;
+            String[] bookmarkSplit = bookmarks[0].InnerText.Split('\\');
+
+            this.folderPath = bookmarkSplit[0];
+
+            for (Int32 i = 1; i < bookmarkSplit.Length - 1; i++)
+            {
+                this.folderPath = this.folderPath + "\\" + bookmarkSplit[i];
+            }
+
+            this.getFromSubfolders = false;
+
+            files = UtilityClass.getDirectoryFiles(this.folderPath, this.getFromSubfolders);
 
             for (Int32 i = 0; i < files.Length; i++)
             {
@@ -53,7 +65,7 @@ namespace PicturePreviewer
                     break;
                 }
             }
-
+            
             getImageLocation();
         }
 
@@ -143,6 +155,8 @@ namespace PicturePreviewer
                 sfd.FileName = fileName;
                 sfd.ShowDialog();
 
+                Boolean fileCopiedSuccessfully = false;
+
                 if (sfd.FileName != "")
                 {
                     FileStream fsOrig = new FileStream(this.pbPreview.ImageLocation, FileMode.Open);
@@ -151,22 +165,34 @@ namespace PicturePreviewer
 
                     fsOrig.Close();
                     fsNew.Close();
-                }
 
-                DialogResult drDelete = MessageBox.Show("Would you like to delete the the original file?", "Delete Original File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                // Check if the New file exists first and then proceed with the delete if the user clicks Yes in the MessageBox
-                if (drDelete == DialogResult.Yes
-                    && File.Exists(sfd.FileName))
-                {
-                    File.Delete(this.pbPreview.ImageLocation);
-
-                    if (this.pictureArray > 0)
+                    while (File.Exists(sfd.FileName) == false)
                     {
-                        this.pictureArray = this.pictureArray - 1;
+                        // do nothing
                     }
 
-                    getAllFiles();
+                    if (File.Exists(sfd.FileName))
+                    {
+                        fileCopiedSuccessfully = true;
+                    }
+                }
+
+                if (fileCopiedSuccessfully == true)
+                {
+                    DialogResult drDelete = MessageBox.Show("Would you like to delete the the original file?", "Delete Original File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    // Check if the New file exists first and then proceed with the delete if the user clicks Yes in the MessageBox
+                    if (drDelete == DialogResult.Yes)
+                    {
+                        if (this.pictureArray > 0)
+                        {
+                            this.pictureArray = this.pictureArray - 1;
+                        }
+
+                        File.Delete(this.pbPreview.ImageLocation);
+
+                        getAllFiles();
+                    }
                 }
             }
         }

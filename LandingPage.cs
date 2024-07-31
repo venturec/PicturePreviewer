@@ -152,8 +152,9 @@ namespace PicturePreviewer
             else
             {
                 PicturePreviewer pp = new PicturePreviewer();
-                pp.folderPath = this.tbPictureFolder.Text;
-                pp.getFromSubfolders = this.cbGetFromSubDirectories.Checked;
+
+                //pp.folderPath = this.tbPictureFolder.Text;
+                //pp.getFromSubfolders = this.cbGetFromSubDirectories.Checked;
                 pp.loadingFiles = true;
                 pp.goToBookmark();
                 pp.loadingFiles = false;
