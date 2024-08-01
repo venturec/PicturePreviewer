@@ -56,7 +56,7 @@ namespace PicturePreviewer
                     else
                     {
                         pp.folderPath = this.tbPictureFolder.Text;
-                        pp.getFromSubfolders = this.cbGetFromSubDirectories.Checked;
+                        pp.getFromSubfolders = true;
                         pp.loadingFiles = true;
                         pp.getAllFiles();
                         pp.loadingFiles = false;
