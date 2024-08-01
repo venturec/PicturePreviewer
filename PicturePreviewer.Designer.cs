@@ -225,6 +225,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PicturePreviewer";
             this.Text = "PicturePreviewer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PicturePreviewer_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
             this.flowPanel.ResumeLayout(false);
             this.flowPanel.PerformLayout();

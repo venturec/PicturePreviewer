@@ -159,21 +159,32 @@ namespace PicturePreviewer
 
                 if (sfd.FileName != "")
                 {
-                    FileStream fsOrig = new FileStream(this.pbPreview.ImageLocation, FileMode.Open);
-                    FileStream fsNew = new FileStream(sfd.FileName, FileMode.Create);
-                    fsOrig.CopyTo(fsNew);
+                    // Check if file is locked first
+                    FileInfo fi = new FileInfo(this.pbPreview.ImageLocation);
+                    Boolean fileIsLocked = this.isFileLocked(fi);
 
-                    fsOrig.Close();
-                    fsNew.Close();
-
-                    while (File.Exists(sfd.FileName) == false)
+                    if (fileIsLocked == true)
                     {
-                        // do nothing
+                        MessageBox.Show("File is being used by another process. Please try again.", "File Locked", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    if (File.Exists(sfd.FileName))
+                    else
                     {
-                        fileCopiedSuccessfully = true;
+                        FileStream fsOrig = new FileStream(this.pbPreview.ImageLocation, FileMode.Open);
+                        FileStream fsNew = new FileStream(sfd.FileName, FileMode.Create);
+                        fsOrig.CopyTo(fsNew);
+
+                        fsOrig.Close();
+                        fsNew.Close();
+
+                        while (File.Exists(sfd.FileName) == false)
+                        {
+                            // do nothing
+                        }
+
+                        if (File.Exists(sfd.FileName))
+                        {
+                            fileCopiedSuccessfully = true;
+                        }
                     }
                 }
 
@@ -195,6 +206,28 @@ namespace PicturePreviewer
                     }
                 }
             }
+        }
+
+        private Boolean isFileLocked(FileInfo file)
+        {
+            try
+            {
+                using (FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+
+            //file is not locked
+            return false;
         }
 
         public void getImageLocation()
@@ -386,6 +419,17 @@ namespace PicturePreviewer
             }
         }
 
+        private void PicturePreviewer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult bookmarkThis = MessageBox.Show("Would you like to bookmark the last image before closing?", "Bookmark This File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Check if the New file exists first and then proceed with the delete if the user clicks Yes in the MessageBox
+            if (bookmarkThis == DialogResult.Yes)
+            {
+                this.bookmarkLastLocation();
+            }
+        }
+
         // This is way to big for tonight
         // If you delete a picture while in the previewer, then you also have to consider deleting the bookmarks as well
         // Will just manually delete the picture for now and come back to this.
@@ -415,7 +459,7 @@ namespace PicturePreviewer
         //        }
 
         //        this.Close();
-                
+
         //        File.Delete(fileToDel);
 
         //        PicturePreviewer pp = new PicturePreviewer();
