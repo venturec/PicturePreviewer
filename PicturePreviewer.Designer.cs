@@ -43,6 +43,7 @@
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.cbFullSizePicture = new System.Windows.Forms.CheckBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnGoToBookmark = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
             this.flowPanel.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,7 @@
             this.btnNext.Location = new System.Drawing.Point(2010, 82);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(40, 856);
-            this.btnNext.TabIndex = 12;
+            this.btnNext.TabIndex = 13;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
@@ -70,7 +71,7 @@
             this.btnPrevious.Location = new System.Drawing.Point(3, 82);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(40, 856);
-            this.btnPrevious.TabIndex = 10;
+            this.btnPrevious.TabIndex = 11;
             this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
@@ -92,7 +93,7 @@
             this.btnSaveTo.Location = new System.Drawing.Point(641, 48);
             this.btnSaveTo.Name = "btnSaveTo";
             this.btnSaveTo.Size = new System.Drawing.Size(143, 28);
-            this.btnSaveTo.TabIndex = 6;
+            this.btnSaveTo.TabIndex = 7;
             this.btnSaveTo.Tag = "Allows you to Save the Image To a different location";
             this.btnSaveTo.Text = "Save Image To";
             this.btnSaveTo.UseVisualStyleBackColor = true;
@@ -133,7 +134,7 @@
             this.cbReview.Location = new System.Drawing.Point(1010, 55);
             this.cbReview.Name = "cbReview";
             this.cbReview.Size = new System.Drawing.Size(62, 17);
-            this.cbReview.TabIndex = 8;
+            this.cbReview.TabIndex = 9;
             this.cbReview.Text = "Review";
             this.cbReview.UseVisualStyleBackColor = true;
             this.cbReview.CheckedChanged += new System.EventHandler(this.cbReview_CheckedChanged);
@@ -144,7 +145,7 @@
             this.btnBookmark.Location = new System.Drawing.Point(492, 48);
             this.btnBookmark.Name = "btnBookmark";
             this.btnBookmark.Size = new System.Drawing.Size(143, 28);
-            this.btnBookmark.TabIndex = 5;
+            this.btnBookmark.TabIndex = 6;
             this.btnBookmark.Text = "Bookmark";
             this.btnBookmark.UseVisualStyleBackColor = true;
             this.btnBookmark.Click += new System.EventHandler(this.btnBookmark_Click);
@@ -172,7 +173,8 @@
             // 
             // flowPanel
             // 
-            this.flowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.flowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowPanel.AutoScroll = true;
             this.flowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -180,7 +182,7 @@
             this.flowPanel.Location = new System.Drawing.Point(49, 82);
             this.flowPanel.Name = "flowPanel";
             this.flowPanel.Size = new System.Drawing.Size(1951, 851);
-            this.flowPanel.TabIndex = 11;
+            this.flowPanel.TabIndex = 12;
             // 
             // cbFullSizePicture
             // 
@@ -188,7 +190,7 @@
             this.cbFullSizePicture.Location = new System.Drawing.Point(1107, 55);
             this.cbFullSizePicture.Name = "cbFullSizePicture";
             this.cbFullSizePicture.Size = new System.Drawing.Size(101, 17);
-            this.cbFullSizePicture.TabIndex = 9;
+            this.cbFullSizePicture.TabIndex = 10;
             this.cbFullSizePicture.Text = "Full Size Picture";
             this.cbFullSizePicture.UseVisualStyleBackColor = true;
             this.cbFullSizePicture.CheckedChanged += new System.EventHandler(this.cbFullSizePicture_CheckedChanged);
@@ -200,15 +202,27 @@
             this.btnDelete.Location = new System.Drawing.Point(790, 48);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(143, 28);
-            this.btnDelete.TabIndex = 7;
+            this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnGoToBookmark
+            // 
+            this.btnGoToBookmark.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGoToBookmark.Location = new System.Drawing.Point(52, 48);
+            this.btnGoToBookmark.Name = "btnGoToBookmark";
+            this.btnGoToBookmark.Size = new System.Drawing.Size(142, 28);
+            this.btnGoToBookmark.TabIndex = 5;
+            this.btnGoToBookmark.Text = "Go To Bookmark";
+            this.btnGoToBookmark.UseVisualStyleBackColor = true;
+            this.btnGoToBookmark.Click += new System.EventHandler(this.btnGoToBookmark_Click);
             // 
             // PicturePreviewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2060, 950);
+            this.Controls.Add(this.btnGoToBookmark);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.cbFullSizePicture);
             this.Controls.Add(this.flowPanel);
@@ -250,5 +264,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
         private System.Windows.Forms.CheckBox cbFullSizePicture;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnGoToBookmark;
     }
 }

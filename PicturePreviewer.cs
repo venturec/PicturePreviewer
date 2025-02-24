@@ -33,7 +33,19 @@ namespace PicturePreviewer
         public void getAllFiles()
         {
             files = UtilityClass.getDirectoryFiles(this.folderPath, this.getFromSubfolders);
+            setFrameWidthHeight();
             getImageLocation();
+        }
+
+        private void setFrameWidthHeight()
+        {
+            Rectangle activeScreenDimensions = Screen.FromControl(this).Bounds;
+            Double scrWidth = activeScreenDimensions.Width * 0.7;
+            Double scrHeight = activeScreenDimensions.Height * 0.7;
+            //Double scrX = activeScreenDimensions.X;
+            //Double scrY = activeScreenDimensions.Y;
+
+            this.Size = new Size(Convert.ToInt32(scrWidth) + activeScreenDimensions.X, Convert.ToInt32(scrHeight) + activeScreenDimensions.Y);
         }
 
         public void goToBookmark()
@@ -403,20 +415,19 @@ namespace PicturePreviewer
 
         private void resetPictureSize()
         {
+            String imgLocation = files[pictureArray];
+            Bitmap bmp = new Bitmap(imgLocation);
+
             if (this.cbFullSizePicture.Checked == true)
             {
-                String imgLocation = files[pictureArray];
-                Bitmap bmp = new Bitmap(imgLocation);
                 this.pbPreview.SizeMode = PictureBoxSizeMode.AutoSize;
-                this.pbPreview.Image = new Bitmap(bmp);
             }
             else
             {
-                String imgLocation = files[pictureArray];
-                Bitmap bmp = new Bitmap(imgLocation);
                 this.pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
-                this.pbPreview.Image = new Bitmap(bmp);
             }
+
+            this.pbPreview.Image = new Bitmap(bmp);
         }
 
         private void PicturePreviewer_FormClosing(object sender, FormClosingEventArgs e)
@@ -428,6 +439,42 @@ namespace PicturePreviewer
             {
                 this.bookmarkLastLocation();
             }
+        }
+
+        private void btnGoToBookmark_Click(object sender, EventArgs e)
+        {
+            // If the image path exists in the bookmark, then go to that image
+
+            String userProfileDirectory = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            XmlDocument xd = new XmlDocument();
+            xd.Load(userProfileDirectory + "\\AppData\\Roaming\\PicturePreviewer\\FileFlags.xml");
+            XmlNodeList bookmarks = xd.GetElementsByTagName("bookmark");
+
+            if (bookmarks.Count == 0)
+            {
+                return;
+            }
+
+            //String bookmarkedLocation = bookmarks[0].InnerText;
+            //String[] bookmarkSplit = bookmarks[0].InnerText.Split('\\');
+
+            //String folderPath = bookmarkSplit[0];
+
+            //for (Int32 i = 1; i < bookmarkSplit.Length - 1; i++)
+            //{
+            //    this.folderPath = this.folderPath + "\\" + bookmarkSplit[i];
+            //}
+
+            for (Int32 i = 0; i < files.Length; i++)
+            {
+                if (files[i] == bookmarks[0].ChildNodes[0].InnerText)
+                {
+                    pictureArray = i;
+                    break;
+                }
+            }
+
+            getImageLocation();
         }
 
         // This is way to big for tonight

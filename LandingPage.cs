@@ -21,6 +21,18 @@ namespace PicturePreviewer
         public PicturePreviewLanding()
         {
             InitializeComponent();
+            setFrameWidthHeight();
+        }
+
+        private void setFrameWidthHeight()
+        {
+            Rectangle activeScreenDimensions = Screen.FromControl(this).Bounds;
+            Double scrWidth = activeScreenDimensions.Width * 0.7;
+            Double scrHeight = activeScreenDimensions.Height * 0.7;
+            //Double scrX = activeScreenDimensions.X;
+            //Double scrY = activeScreenDimensions.Y;
+
+            this.Size = new Size(Convert.ToInt32(scrWidth) + activeScreenDimensions.X, Convert.ToInt32(scrHeight) + activeScreenDimensions.Y);
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
