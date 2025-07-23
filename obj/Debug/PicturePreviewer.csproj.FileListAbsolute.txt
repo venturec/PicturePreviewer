@@ -11,3 +11,4 @@ C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.cspr
 C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.csproj.CoreCompileInputs.cache
 C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.exe
 C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.pdb
+C:\Users\marcu\Documents\GitHub\PicturePreviewer\obj\Debug\PicturePreviewer.exe.config

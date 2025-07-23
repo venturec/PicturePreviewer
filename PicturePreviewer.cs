@@ -416,7 +416,14 @@ namespace PicturePreviewer
         private void resetPictureSize()
         {
             String imgLocation = files[pictureArray];
-            Bitmap bmp = new Bitmap(imgLocation);
+
+            FileSystemInfo fsi = new FileInfo(imgLocation); 
+            String ext = fsi.Extension.ToLower();
+            if (ext != ".jpg" && ext != ".jpeg" && ext != ".png" && ext != ".bmp" && ext != ".gif")
+            {
+                MessageBox.Show("Unsupported image format: " + ext + ". Please select a valid image file.", "Unsupported Format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (this.cbFullSizePicture.Checked == true)
             {
@@ -426,8 +433,15 @@ namespace PicturePreviewer
             {
                 this.pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
             }
-
-            this.pbPreview.Image = new Bitmap(bmp);
+            try
+            {
+                Bitmap bmp = new Bitmap(imgLocation);
+                this.pbPreview.Image = new Bitmap(bmp);
+            }
+            catch (Exception exc) 
+            {
+                // Don't care. Just bypass the image for now
+            }
         }
 
         private void PicturePreviewer_FormClosing(object sender, FormClosingEventArgs e)
