@@ -24,6 +24,31 @@ namespace PicturePreviewer
             setFrameWidthHeight();
         }
 
+        public PicturePreviewLanding(string[] args)
+        {
+            InitializeComponent();
+
+            String[] filePathSplit = args[0].Split('\\');
+
+            String folderPath = "";
+            for (Int32 i = 0; i < filePathSplit.Length - 1; i++)
+            {
+                folderPath += filePathSplit[i] + "\\";
+            }
+
+            folderPath = folderPath.Substring(0, folderPath.Length - 1);
+            this.tbPictureFolder.Text = folderPath;
+            this.populateTreeView(folderPath);
+
+            PicturePreviewer pp = new PicturePreviewer();
+            pp.files = new string[1];
+            pp.files[0] = args[0];
+            pp.getImageLocation();
+            pp.Show();
+
+            setFrameWidthHeight();
+        }
+
         private void setFrameWidthHeight()
         {
             Rectangle activeScreenDimensions = Screen.FromControl(this).Bounds;
